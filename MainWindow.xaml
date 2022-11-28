@@ -1,0 +1,28 @@
+﻿<Window x:Class="SeaBattleGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SeaBattleGame"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="430" Width="366">
+    <Grid>
+        <Button Content="Button" HorizontalAlignment="Center" Height="30" Margin="0,324,0,0" VerticalAlignment="Top" Width="168"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,207,0,0" TextWrapping="Wrap" Text="{Binding Size}" VerticalAlignment="Top" Width="120"/>
+        <ListBox ItemsSource="{Binding Field}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBox ItemsSource="{Binding Row}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsControl>
+                                    <Button></Button>
+                                </ItemsControl>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
