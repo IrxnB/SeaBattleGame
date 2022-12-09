@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
+using static SeaBattleGame.Config.Colors;
 
 namespace SeaBattleGame
 {
@@ -21,11 +23,12 @@ namespace SeaBattleGame
         {
             get { return _isShip; }
         }
-        public Color color
+        public SolidColorBrush Brush
         {
             get
             {
-                return _isOpened? Color.LightGray : _isShip? Color.Red : Color.DarkGray;
+                Color color = !_isOpened? CLOSED : _isShip? SHIP : EMPTY_SPACE;
+                return new SolidColorBrush(color);
             }
         }
 
@@ -40,8 +43,14 @@ namespace SeaBattleGame
             { 
                 _isOpened = value;
                 OnPropertyChanged("IsOpened");
-                OnPropertyChanged("Color");
+                OnPropertyChanged("Brush");
             }
+        }
+        public bool Click()
+        {
+            bool result = IsOpened;
+            IsOpened = true;
+            return result;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

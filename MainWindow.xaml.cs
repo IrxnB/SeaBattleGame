@@ -28,7 +28,43 @@ namespace SeaBattleGame
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var gameField = (GameField)DataContext;
+            gameField.InitializeField();
+            var field = gameField.Field;
+            MainPanel.Children.Clear();
+            MainPanel.Width = Window.Width; MainPanel.Height = Window.Width;
+            foreach(var row in field)
+            {
+                var horizontalPanel = new StackPanel();
+                horizontalPanel.Orientation = Orientation.Horizontal;
+                MainPanel.Children.Add(horizontalPanel);
+                foreach(var cell in row)
+                {
+                    var button = new Button();
+                    button.Width = MainPanel.Width / gameField.Size;
+                    button.Height = MainPanel.Width / gameField.Size;
+                    horizontalPanel.Children.Add(button);
+
+                    buttonCellBind(button, cell);
+                    
+                    button.Click += (sender, e) =>
+                        {
+                            if (gameField.MakeClick(cell))
+                            {
+                                MessageBox.Show($"You won! Turns:{gameField.TurnCount}");
+                            }
+                        };
+                    StartButton.Name = "Restart";
+                }
+            }
             
+        }
+        private static void buttonCellBind(Button button, Cell cell)
+        {
+            SolidColorBrush brush = new SolidColorBrush();
+            Binding colorBind = new Binding("Brush");
+            colorBind.Source = cell;
+            button.SetBinding(BackgroundProperty, colorBind);
         }
     }
 }
