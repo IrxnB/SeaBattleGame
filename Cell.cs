@@ -21,7 +21,7 @@ namespace SeaBattleGame
         {
             get { return _isShip; }
         }
-        public Color Color
+        public Color color
         {
             get
             {

@@ -7,22 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="430" Width="366">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Center" Height="30" Margin="0,324,0,0" VerticalAlignment="Top" Width="168"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,207,0,0" TextWrapping="Wrap" Text="{Binding Size}" VerticalAlignment="Top" Width="120"/>
-        <ListBox ItemsSource="{Binding Field}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <ListBox ItemsSource="{Binding Row}">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ItemsControl>
-                                    <Button></Button>
-                                </ItemsControl>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                    </ListBox>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Button Content="Button" HorizontalAlignment="Left" Height="30" Margin="206,374,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,374,0,0" TextWrapping="Wrap" Text="{Binding Size}" VerticalAlignment="Top" Width="150
+                 " Height="30"/>
+
     </Grid>
 </Window>
